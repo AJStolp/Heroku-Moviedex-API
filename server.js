@@ -46,7 +46,7 @@ app.get('/movies', function handleGetMovies(req, res) {
     }
 
     if(req.query.avg_vote) {
-        response = response.filter(movie => movie.avg_vote.toLowerCase().includes(req.query.avg_vote.toLowerCase()))
+        response = response.filter(movie => Number(movie.avg_vote) >= Number(req.query.avg_vote))
     }
 
     return res.json(response)
